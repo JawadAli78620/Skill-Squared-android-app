@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "564418472543",
+    "firebase_url": "https://skill-squared2-firebase.firebaseio.com",
+    "project_id": "skill-squared2-firebase",
+    "storage_bucket": "skill-squared2-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564418472543:android:74158fc85e808a74a889ea",
+        "android_client_info": {
+          "package_name": "com.example.skillsquared2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564418472543-822kfo1l7d70mv4foaqa5o3tkf3n8llp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.skillsquared2",
+            "certificate_hash": "d9699889b11a069100d375ecdd37ac7593875505"
+          }
+        },
+        {
+          "client_id": "564418472543-hphpt87r3kpp4njmdbhma1s4qovgujih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkZDhZK-qcS1slaxWIZdA3gwXxvUSPjBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564418472543-hphpt87r3kpp4njmdbhma1s4qovgujih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

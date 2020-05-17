@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.skillsquared2.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_saved"
+        android:name="com.example.skillsquared2.ui.saved.SavedFragment"
+        android:label="@string/menu_saved"
+        tools:layout="@layout/fragment_saved" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.skillsquared2.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_inbox"
+        android:name="com.example.skillsquared2.ui.inbox.ChatListFragment"
+        android:label="@string/menu_inbox"
+        tools:layout="@layout/fragment_chat_list" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.skillsquared2.ui.logout.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout" />
+
+    <fragment
+        android:id="@+id/nav_buyer"
+        android:name="com.example.skillsquared2.ui.buyer.BuyerFragment"
+        android:label="Buyer"
+        tools:layout="@layout/fragment_buyer" />
+
+    <fragment
+        android:id="@+id/nav_seller"
+        android:name="com.example.skillsquared2.ui.seller.SellerFragment"
+        android:label="Seller"
+        tools:layout="@layout/fragment_seller" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.skillsquared2.ui.profile.ProfileFragment"
+        android:label="profile"
+        tools:layout="@layout/profile_fragment" />
+</navigation>
