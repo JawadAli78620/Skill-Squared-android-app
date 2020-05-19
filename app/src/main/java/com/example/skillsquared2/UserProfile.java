@@ -29,12 +29,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -71,14 +73,20 @@ public class UserProfile extends AppCompatActivity {
     //Image uri
     Uri image_uri;
     private ImageView profileIv;
-    private TextView profNameTv, locationTv, addLinksTv, addLanguageTv, addSkillsTv;
+    String language = "", skills = "", links = "", description = "";
+    private TextView profNameTv, locationTv, addLinksTv, addLanguageTv, addSkillsTv, addDescTv;
+    private TextView linksListTv, langListTv, skillsListTv, descriptionTv;
     private FloatingActionButton editProfFab;
-    private FirebaseAuth firebaseAuth;
+    private EditText descriptionET;
+    private MaterialCardView saveBtnCv;
+    private RelativeLayout savBtnRL;
     private FirebaseUser user;
     private FirebaseDatabase database;
     private DatabaseReference dbReference;
     private StorageReference storageReference;
     private ProgressDialog progressDialog;
+    //Firebase
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +115,14 @@ public class UserProfile extends AppCompatActivity {
         addLanguageTv = findViewById(R.id.create_profile_addLang);
         addSkillsTv = findViewById(R.id.create_profile_addSkill);
         editProfFab = findViewById(R.id.edit_profile_fab);
+        langListTv = findViewById(R.id.create_profile_lang_list);
+        linksListTv = findViewById(R.id.create_profile_links_list);
+        skillsListTv = findViewById(R.id.create_profile_skills_list);
+        descriptionTv = findViewById(R.id.create_profile_descriptionTV);
+        descriptionET = findViewById(R.id.create_profile_descriptionField);
+        addDescTv = findViewById(R.id.create_profile_addDesc);
+        saveBtnCv = findViewById(R.id.create_profile_saveBtnCV);
+        savBtnRL = findViewById(R.id.create_profile_bottomButtonRL);
 
         //get firebase instances
         firebaseAuth = FirebaseAuth.getInstance();
@@ -137,16 +153,20 @@ public class UserProfile extends AppCompatActivity {
                     String name = "" + ds.child("name").getValue();
                     String email = "" + ds.child("email").getValue();
                     String pImage = "" + ds.child("image").getValue();
-                    String language = "" + ds.child("language").getValue();
+                    language = "" + ds.child("language").getValue();
                     String location = "" + ds.child("location").getValue();
-                    String skills = "" + ds.child("skills").getValue();
+                    skills = "" + ds.child("skills").getValue();
+                    links = "" + ds.child("links").getValue();
+                    description = "" + ds.child("description").getValue();
 
                     //set Data to UI
                     profNameTv.setText(name);
-                    //linksTv.setText(email);
-                    //languageTv.setText(language);
+                    linksListTv.setText(links);
+                    langListTv.setText(language);
                     locationTv.setText(location);
-                    //skillsTv.setText(skills);
+                    skillsListTv.setText(skills);
+                    descriptionTv.setText(description);
+
 
                     try {
                         //if image received, set
@@ -371,10 +391,97 @@ public class UserProfile extends AppCompatActivity {
         //exampleDialog.show(getSupportFragmentManager(), "example Dialog");
     }
 
+    @SuppressLint("RestrictedApi")
     private void showEditOptionsInUI() {
+        addLanguageTv.setVisibility(View.VISIBLE);
+        addSkillsTv.setVisibility(View.VISIBLE);
+        addLinksTv.setVisibility(View.VISIBLE);
+        addDescTv.setVisibility(View.VISIBLE);
+        savBtnRL.setVisibility(View.VISIBLE);
+        editProfFab.setVisibility(View.GONE);
 
-
+        editOtherDetails();
     }
+
+    private void editOtherDetails() {
+
+        // Edit Languages click listener
+        addLanguageTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditTextDialogue("language");
+            }
+        });
+
+        // Edit Skills click listener
+        addSkillsTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditTextDialogue("skills");
+            }
+        });
+
+        // Edit Links click Listener
+
+        addLinksTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditTextDialogue("links");
+            }
+        });
+
+        //Edit Description
+        addDescTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                descriptionTv.setVisibility(View.GONE);
+                descriptionET.setVisibility(View.VISIBLE);
+                descriptionET.setText(description);
+            }
+        });
+
+        saveBtnCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                final String value = descriptionET.getText().toString().trim();
+                progressDialog.setTitle("Saving Information...");
+                progressDialog.show();
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("description", value);
+
+                dbReference.child(user.getUid()).updateChildren(result)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @SuppressLint("RestrictedApi")
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+                                descriptionTv.setText(value);
+                                descriptionET.setVisibility(View.GONE);
+                                descriptionTv.setVisibility(View.VISIBLE);
+
+                                editProfFab.setVisibility(View.VISIBLE);
+                                savBtnRL.setVisibility(View.GONE);
+                                addLanguageTv.setVisibility(View.GONE);
+                                addSkillsTv.setVisibility(View.GONE);
+                                addLinksTv.setVisibility(View.GONE);
+                                addDescTv.setVisibility(View.GONE);
+
+                                progressDialog.dismiss();
+                                Toast.makeText(UserProfile.this, "Saved Successfully..", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(UserProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+        });
+    }
+
 
     @SuppressLint("ResourceType")
     private void showEditTextDialogue(final String key) {
@@ -402,6 +509,19 @@ public class UserProfile extends AppCompatActivity {
                 if (!TextUtils.isEmpty(value)) {
                     progressDialog.show();
                     HashMap<String, Object> result = new HashMap<>();
+
+                    if (key.equals("language")) {
+                        language += "\n" + value;
+                        value = language;
+                    }
+                    if (key.equals("skills")) {
+                        skills += "\n" + value;
+                        value = skills;
+                    }
+                    if (key.equals("links")) {
+                        links += "\n" + value;
+                        value = links;
+                    }
                     result.put(key, value);
 
                     dbReference.child(user.getUid()).updateChildren(result)

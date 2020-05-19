@@ -53,5 +53,6 @@
     <string name="min_5">min $5</string>
     <string name="enter_your_budget">Enter your budget</string>
     <string name="submit_your_request">Submit Your Request</string>
+    <string name="save">Save</string>
 
 </resources>

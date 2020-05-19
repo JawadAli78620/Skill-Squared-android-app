@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,226 +10,302 @@
     android:scrollbars="vertical"
     tools:context=".UserProfile">
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/create_profile_bottomButtonRL"
+        android:layout_marginBottom="30dp"
+        android:fillViewport="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/create_profile_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/create_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="7dp"
+                android:text="Jawad Ali"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/create_profile_name"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/create_profile_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_name"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_action_location"
+                android:text="From"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/create_profile_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:text="Add Loacation"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/create_profile_from"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="7dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/create_profile_languages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_from"
+                android:layout_marginTop="10dp"
+                android:text="Languages"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/create_profile_addLang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_from"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:text="Edit"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/create_profile_lang_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_languages"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
+                android:text="English"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/create_profile_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_lang_list"
+                android:layout_marginTop="10dp"
+                android:text="Description"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/create_profile_addDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_lang_list"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:text="Edit"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/create_profile_descriptionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_description"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:text="Description sdhusd asiduisad isdsidu isudsud sdsudu usud "
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/create_profile_descriptionField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/create_profile_description"
+                android:layout_marginTop="10dp"
+                android:background="@color/lightGray"
+                android:ems="10"
+                android:focusable="true"
+                android:hint="Enter Description here"
+                android:inputType="textMultiLine"
+                android:lineSpacingExtra="3sp"
+                android:lines="6"
+                android:maxLines="6"
+                android:minLines="1"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/create_profile_skills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_descriptionTV"
+                android:layout_marginTop="10dp"
+                android:text="Skills"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/create_profile_addSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_descriptionTV"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:textStyle="bold"
+                android:text="Edit"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/create_profile_skills_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_skills"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:text="C++"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/create_profile_links"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_skills_list"
+                android:layout_marginTop="10dp"
+                android:text="Linked Accounts"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/create_profile_addLinks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_skills"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:textStyle="bold"
+                android:text="Add New"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/create_profile_links_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/create_profile_links"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:text="www.linkedin.com"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/edit_profile_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:src="@drawable/ic_edit_black_24dp" />
 
     <RelativeLayout
+        android:id="@+id/create_profile_bottomButtonRL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/create_profile_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/create_profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_img"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="Jawad Ali"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp" />
-
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightGray"
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/create_profile_name"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary" />
+            android:background="@color/black" />
 
-        <TextView
-            android:id="@+id/create_profile_from"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_name"
-            android:layout_marginTop="20dp"
-            android:drawableLeft="@drawable/ic_action_location"
-            android:text="From"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-
-        <TextView
-            android:id="@+id/create_profile_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_name"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:text="Add Loacation"
-            android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/create_profile_from"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/create_profile_languages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_from"
-            android:layout_marginTop="20dp"
-            android:text="Languages"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/create_profile_addLang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_from"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:text="Edit"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/create_profile_lang_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_languages"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="0dp"
-            android:text="English"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/create_profile_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_lang_list"
-            android:layout_marginTop="10dp"
-            android:text="Description"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-
-        <EditText
-            android:id="@+id/create_profile_descriptionField"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/create_profile_saveBtnCV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/create_profile_description"
-            android:layout_marginTop="10dp"
-            android:background="@color/lightGray"
-            android:ems="10"
-            android:focusable="true"
-            android:hint="Enter Description here"
-            android:inputType="textMultiLine"
-            android:lineSpacingExtra="3sp"
-            android:lines="6"
-            android:maxLines="6"
-            android:minLines="1"
-            android:padding="10dp"
-            android:scrollbars="vertical"
-            android:visibility="gone" />
-
-
-        <TextView
-            android:id="@+id/create_profile_skills"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_descriptionField"
-            android:layout_marginTop="20dp"
-            android:text="Skills"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/create_profile_addSkill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_descriptionField"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:text="Edit"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/create_profile_skills_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_skills"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:text="C++"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/create_profile_links"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_skills"
-            android:layout_marginTop="20dp"
-            android:text="Linked Accounts"
-            android:textColor="#000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/create_profile_addLinks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_skills"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:text="Add New"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/create_profile_links_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/create_profile_links"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:text="www.linkedin.com"
-            android:textColor="@color/colorPrimary"
-            android:textSize="15sp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/edit_profile_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimaryDark"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_edit_black_24dp" />
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.card.MaterialCardView>
+
     </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>

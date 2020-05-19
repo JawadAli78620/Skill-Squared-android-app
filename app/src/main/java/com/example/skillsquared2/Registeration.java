@@ -112,8 +112,10 @@ public class Registeration extends AppCompatActivity {
                                     userHashMap.put("image", "");
                                     userHashMap.put("name", userName);
                                     userHashMap.put("location", "");
+                                    userHashMap.put("description", "");
                                     userHashMap.put("language", "");
                                     userHashMap.put("skills", "");
+                                    userHashMap.put("links", "");
 
                                     //path to store user data named "Users"
                                     DatabaseReference reference = firebaseDatabase.getReference("Users");
